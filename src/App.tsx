@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import { 
+  BrowserRouter, 
+  Routes, 
+  Route
+} from "react-router-dom";
+import { 
+  ToastContainer,
+} from 'react-toastify';
+import { Login } from "./components/auth/login";
+import { Register } from "./components/auth/register";
+import { ForgotPassword } from "./components/auth/forgot-password";
+import { SendOtp } from "./components/auth/send-otp";
+import { VerifyOtp } from "./components/auth/verify-otp";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React With Moeez
-        </a>
-      </header>
-    </div>
+    <>
+   <BrowserRouter>
+   <Routes>
+    <Route path="/login" element={<Login/>} />
+    <Route path="/register" element={<Register/>} />
+    <Route path="/forgot-password" element={<ForgotPassword/>} />
+    <Route path="/send-otp" element={<SendOtp/>} />
+    <Route path="/verify-otp" element={<VerifyOtp/>} />
+   </Routes>
+   </BrowserRouter> 
+   <ToastContainer />
+    </>
   );
 }
 
