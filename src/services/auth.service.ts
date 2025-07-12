@@ -71,4 +71,12 @@ const VerifyOtp = async (data: any) => {
   }
 }
 
-export default { SignUp, Login, ForgotPassword, SendOtp, VerifyOtp };
+const authService = { 
+  SignUp, 
+  Login, 
+  ForgotPassword, 
+  SendOtp, 
+  VerifyOtp
+};
+
+export default authService;
