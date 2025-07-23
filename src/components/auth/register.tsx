@@ -1,5 +1,10 @@
 import React, { JSX } from "react";
 import { AiOutlineSearch } from 'react-icons/ai';
+import { MdLanguage } from 'react-icons/md';
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { userData } from "../../constants/types";
+import authService from "../../services/auth.service";
 import {
   FaGoogle,
   FaAmazon,
@@ -19,11 +24,6 @@ import {
   SiNotion,
   SiRobinhood
 } from "react-icons/si";
-import { MdLanguage } from 'react-icons/md';
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import { userData } from "../../constants/types";
-import authService from "../../services/auth.service";
 
 export const Register: React.FC = () => {
   const navigate = useNavigate();

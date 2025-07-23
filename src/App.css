@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .heading {
   @apply text-[42px] font-bold text-gray-900 mb-4 leading-[1.2];
 }
@@ -32,5 +31,30 @@
 }
 
 .btn-primary {
-  @apply w-full h-10 px-4 rounded-2xl text-white font-bold primary-bg shadow-[-1px_-2px_0px_0px_rgba(229,87,75,1.00)];
+  @apply w-full h-10 px-4 rounded-2xl text-white font-bold primary-bg;
+}
+
+.cancel-button {
+  @apply !w-auto !bg-[#F2F2F3] !text-black h-10 rounded-2xl !shadow-none border border-[#dbdbda] px-10 font-bold;
+}
+
+.profile-boxes-margin-top {
+  @apply mt-8;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #a0aec0;
+  border-radius: 18px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background-color: #f7fafc;
+}
+
+.user-info-box {
+  @apply border border-gray-200 rounded-md px-[10px] py-[5px] text-[#22252B] shadow-sm text-[14px] leading-[20px] inline-block capitalize;
 }
