@@ -2,7 +2,7 @@ import React from "react";
 import { AddProjectModalProps } from "../../../constants/interface";
 import { months } from "../../../constants/constants";
 import { getYears } from "../../../helpers/helper";
-import userService from "../../../services/user.service";
+import { userService } from "../../../services/user.service";
 import { toast } from "react-toastify";
 
 export const AddProjectModal: React.FC<AddProjectModalProps> = ({ setShowAddProjectModal }) => {

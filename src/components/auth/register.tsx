@@ -4,7 +4,7 @@ import { MdLanguage } from 'react-icons/md';
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { userData } from "../../constants/types";
-import authService from "../../services/auth.service";
+import { authService } from "../../services/auth.service";
 import {
   FaGoogle,
   FaAmazon,

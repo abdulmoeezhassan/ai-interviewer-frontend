@@ -8,6 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { userContext } from "../../context/context";
 import { FaUserCircle } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { userService } from "../../services/user.service";
+import {
+  CircularProgressbar,
+  buildStyles
+} from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 import {
   HiOutlinePencil,
   HiOutlineBriefcase
@@ -26,7 +32,32 @@ export const Profile: React.FC = () => {
   const [showEditWorkExperienceModal, setShowEditWorkExperienceModal] = React.useState<boolean>(false);
   const [showAddCertificationModal, setShowAddCertificationModal] = React.useState<boolean>(false);
   const [showAddProjectModal, setShowAddProjectModal] = React.useState<boolean>(false);
+  const [interviewData, setInterviewData] = React.useState<any>(null);
   const [isImageError, setIsImageError] = React.useState<boolean>(false);
+
+  const getUserInterview = async () => {
+    try {
+      const userId = localStorage.getItem("userId");
+      if (!userId) {
+        console.error("User ID not found in local storage.");
+        return;
+      }
+      const userInterviewData = await userService.getUserInterview(userId);
+      if (userInterviewData) {
+        setInterviewData(userInterviewData);
+      } else {
+        console.error("No user interview data found.");
+      }
+
+    }
+    catch (error) {
+      console.error("Error fetching user interview data:", error);
+    }
+  }
+
+  React.useEffect(() => {
+    getUserInterview();
+  }, []);
 
   return (
     <>
@@ -352,9 +383,66 @@ export const Profile: React.FC = () => {
           className="border border-[#CBD5E1] lg:p-8 md:p-5 p-4 rounded-md cursor-pointer profile-boxes-margin-top"
         >
           <div>
-            <h1 className="font-bold">
+            <h1 className="text-lg font-semibold mb-4">
               Interview Results
             </h1>
+
+            {interviewData?.interview?.map((interview: any) => (
+              <div
+                key={interview._id}
+                className="flex flex-col gap-4"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="w-16 h-16">
+                    <CircularProgressbar
+                      value={interview.score * 10}
+                      text={`${interview.score * 10}%`}
+                      styles={buildStyles({
+                        textSize: "16px",
+                        pathColor: "green",
+                        textColor: "#22252b",
+                        trailColor: "#e5e7eb",
+                      })}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                  <h2 className="text-[20px] font-semibold text-[#22252b] leading-[25px]">
+                    {interview.type === "english"
+                      ? "English Test"
+                      : interview.type === "coding"
+                        ? "Coding Test"
+                        : interview.type === "prompt"
+                          ? "AI-Native Test"
+                          : "Interview"}
+                  </h2>
+                  <span className="text-sm text-gray-500">
+                    Overall Score |{" "}
+                    {new Date(interview.start_time).toLocaleDateString()}
+                  </span>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl p-4 space-y-2 shadow w-full bg-[#97979708] border border-solid border-[#dbdbda]">
+                  <h3 className="font-semibold">Summary:</h3>
+                  <p className="text-gray-700">{interview.summary}</p>
+                </div>
+
+                <div className="rounded-2xl p-4 space-y-2 shadow w-full bg-[#97979708] border border-solid border-[#dbdbda]">
+                  <h3 className="font-semibold">Strengths:</h3>
+                  <p className="text-gray-700">{interview.strengths}</p>
+                </div>
+
+                <div className="rounded-2xl p-4 space-y-2 shadow w-full bg-[#97979708] border border-solid border-[#dbdbda]">
+                  <h3 className="font-semibold">Areas for Improvement:</h3>
+                  <p className="text-gray-700">{interview.areas_for_improvement}</p>
+                </div>
+
+                <div className="rounded-2xl p-4 space-y-2 shadow w-full bg-[#97979708] border border-solid border-[#dbdbda]">
+                  <h3 className="font-semibold">Recommendation:</h3>
+                  <p className="text-gray-700">{interview.recommendation}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { JSX } from "react";
 import { colors } from "../../constants/constants";
 import { Skill } from "../../constants/types";
-import userService from "../../services/user.service";
+import { userService } from "../../services/user.service";
 import { toast } from "react-toastify";
 import {
   Cell,

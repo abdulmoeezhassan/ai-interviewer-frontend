@@ -2,7 +2,7 @@ import React, { JSX } from "react";
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FaCheckCircle } from 'react-icons/fa';
 import { MdLanguage } from 'react-icons/md';
-import authService from "../../services/auth.service";
+import { authService } from "../../services/auth.service";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 

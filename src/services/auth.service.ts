@@ -63,7 +63,6 @@ const VerifyOtp = async (data: any) => {
     `${apiURl}/auth/verify-otp`,
     data
    );
-   console.log(login)
    return login.data;
 
   } catch (error) {
@@ -71,12 +70,10 @@ const VerifyOtp = async (data: any) => {
   }
 }
 
-const authService = { 
+export const authService = { 
   SignUp, 
   Login, 
   ForgotPassword, 
   SendOtp, 
   VerifyOtp
 };
-
-export default authService;

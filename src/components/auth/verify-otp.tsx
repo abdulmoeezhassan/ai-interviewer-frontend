@@ -2,7 +2,7 @@ import React, { JSX } from "react";
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FaCheckCircle } from 'react-icons/fa';
 import { MdLanguage } from 'react-icons/md';
-import authService from "../../services/auth.service";
+import { authService } from "../../services/auth.service";
 import { toast } from "react-toastify";
 
 export const VerifyOtp: React.FC = () => {
@@ -21,7 +21,6 @@ export const VerifyOtp: React.FC = () => {
       inputs.current[index + 1]?.focus();
     }
   };
-
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
     if (e.key === 'Backspace' && otp[index] === '') {
@@ -105,5 +104,5 @@ export const VerifyOtp: React.FC = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};

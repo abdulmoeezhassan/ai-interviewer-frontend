@@ -1,6 +1,6 @@
 import React from "react";
 import { AddCertificationModalProps } from "../../../constants/interface";
-import userService from "../../../services/user.service";
+import { userService } from "../../../services/user.service";
 import { toast } from "react-toastify";
 
 export const AddCertificationModal: React.FC<AddCertificationModalProps> = ({ setShowAddCertificationModal }) => {

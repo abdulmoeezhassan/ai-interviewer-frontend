@@ -2,10 +2,12 @@ import React, { JSX } from "react";
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FaCheckCircle } from 'react-icons/fa';
 import { MdLanguage } from 'react-icons/md';
-import authService from "../../services/auth.service";
+import { authService } from "../../services/auth.service";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const Login: React.FC = () => {
+  const navigate = useNavigate();
   const [userData, setUserData] = React.useState({
     email: '',
     password: ''
@@ -25,6 +27,7 @@ export const Login: React.FC = () => {
         localStorage.setItem("email", login.user.user.email);
         localStorage.setItem("accessToken", login.user.user.accessToken);
         localStorage.setItem("userId", login.user.user._id);
+        navigate('/assessments')
       }
       else {
         toast.error("Login failed. Please check your credentials.");

@@ -2,7 +2,7 @@ import React, { JSX } from "react";
 import { tabs } from "../../../constants/constants";
 import { toast } from "react-toastify";
 import { EditProfileModalProps } from "../../../constants/interface";
-import userService from "../../../services/user.service";
+import { userService } from "../../../services/user.service";
 import {
   FaCloudUploadAlt,
   FaCamera,

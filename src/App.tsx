@@ -14,6 +14,9 @@ import { VerifyOtp } from "./components/auth/verify-otp";
 import { Profile } from "./components/profile/profile";
 import { Skills } from "./components/profile/skills";
 import { UserProvider } from "./context/context";
+import Interview from "./components/interview";
+import { Assessment } from "./components/assesment";
+import { Home } from "./components/home";
 import './App.css';
 
 function App() {
@@ -29,6 +32,9 @@ function App() {
             <Route path="/verify-otp" element={<VerifyOtp />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/skills" element={<Skills />} />
+            <Route path="/interview/:type" element={<Interview />} />
+            <Route path="/assessments" element={<Assessment />} />
+            <Route path="/home" element={<Home />} />
           </Routes>
         </BrowserRouter>
       </UserProvider>

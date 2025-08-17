@@ -27,9 +27,20 @@ const getSingleUser = async (email: any) => {
   }
 };
 
-const userService = {
-  updateUser,
-  getSingleUser
+const getUserInterview = async (userId: any) => {
+  try {
+    const getUserInterview = await axios.get(
+      `${apiURl}/users/get-user-interview/${userId}`
+    );
+    return getUserInterview.data;
+
+  } catch (error) {
+    console.error("Error during fetching user interviews data:", error);
+  }
 };
 
-export default userService;
+export const userService = {
+  updateUser,
+  getSingleUser,
+  getUserInterview
+};

@@ -3,7 +3,7 @@ import { EditWorkExperienceModalProps } from "../../../constants/interface";
 import { industries } from "../../../constants/constants";
 import { months } from "../../../constants/constants";
 import { getYears } from "../../../helpers/helper";
-import userService from "../../../services/user.service";
+import { userService } from "../../../services/user.service";
 import { toast } from "react-toastify";
 
 export const EditWorkExperienceModal: React.FC<EditWorkExperienceModalProps> = ({ setShowEditWorkExperienceModal }) => {
